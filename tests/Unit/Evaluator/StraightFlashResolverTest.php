@@ -68,11 +68,11 @@ final class StraightFlashResolverTest extends TestCase
                     new Card(CardRankEnum::Two, CardSuitEnum::Diamonds),
                 ],
                 [
-                    CardRankEnum::Five->value,
-                    CardRankEnum::Six->value,
-                    CardRankEnum::Seven->value,
-                    CardRankEnum::Eight->value,
                     CardRankEnum::Nine->value,
+                    CardRankEnum::Eight->value,
+                    CardRankEnum::Seven->value,
+                    CardRankEnum::Six->value,
+                    CardRankEnum::Five->value,
                 ],
             ],
         ];
