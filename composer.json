@@ -1,0 +1,21 @@
+{
+    "name": "forest-yeti/poker-kernel",
+    "description": "Библиотека, которая реализовывает покерные правила (Определение комбинаций, определение победителя раздачи, RNG)",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ForestYeti\\PokerKernel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Forest-Yeti",
+            "email": "artem.tiutnev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^12.5"
+    }
+}
