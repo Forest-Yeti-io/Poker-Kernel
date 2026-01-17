@@ -10,4 +10,8 @@ enum CombinationScoreEnum: int
     case ThreeOfKind = 300;
     case Straight = 400;
     case Flash = 500;
+    case FullHouse = 600;
+    case FourOfKind = 700;
+    case StraightFlash = 800;
+    case RoyalFlash = 900;
 }

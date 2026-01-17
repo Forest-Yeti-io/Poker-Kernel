@@ -85,7 +85,7 @@ class CardDeck
 
     public function slice(int $offset = 0, int $length = 5): CardDeck
     {
-        return new(
+        return new self(
             array_slice($this->cards, $offset, $length)
         );
     }
