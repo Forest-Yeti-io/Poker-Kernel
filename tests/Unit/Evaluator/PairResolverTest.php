@@ -5,7 +5,7 @@ namespace App\Tests\Evaluator;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardRankEnum;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardSuitEnum;
 use ForestYeti\PokerKernel\CardDeck\ValueObject\Card;
-use ForestYeti\PokerKernel\Evaluator\Enum\CombinationScoreEnum;
+use ForestYeti\PokerKernel\Evaluator\Enum\HoldemCombinationScoreEnum;
 use ForestYeti\PokerKernel\Evaluator\Exception\CombinationNotResolvedException;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\PairResolver;
 use ForestYeti\PokerKernel\Evaluator\ValueObject\Player;
@@ -22,7 +22,7 @@ final class PairResolverTest extends TestCase
     public function testPairResolver(array $playingCards, CardRankEnum $expectedPairRank, array $expectedKickersRankValues): void
     {
         $resolveResult = (new PairResolver())
-            ->setBaseScore(CombinationScoreEnum::Pair->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::Pair->value)
             ->resolve($playingCards, new Player('Mock'));
 
         // Пара
@@ -58,7 +58,7 @@ final class PairResolverTest extends TestCase
         $this->expectException(CombinationNotResolvedException::class);
 
         (new PairResolver())
-            ->setBaseScore(CombinationScoreEnum::Pair->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::Pair->value)
             ->resolve($playingCards, new Player('Mock'));
     }
 

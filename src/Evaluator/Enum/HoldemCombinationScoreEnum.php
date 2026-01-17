@@ -2,7 +2,7 @@
 
 namespace ForestYeti\PokerKernel\Evaluator\Enum;
 
-enum CombinationScoreEnum: int
+enum HoldemCombinationScoreEnum: int
 {
     case HighCard = 1;
     case Pair = 100;

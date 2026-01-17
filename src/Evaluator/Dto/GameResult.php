@@ -1,6 +1,8 @@
 <?php
 
-namespace ForestYeti\PokerKernel\Evaluator\ValueObject;
+namespace ForestYeti\PokerKernel\Evaluator\Dto;
+
+use ForestYeti\PokerKernel\Evaluator\ValueObject\ResolverResult;
 
 class GameResult
 {

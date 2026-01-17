@@ -5,7 +5,7 @@ namespace App\Tests\Evaluator;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardRankEnum;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardSuitEnum;
 use ForestYeti\PokerKernel\CardDeck\ValueObject\Card;
-use ForestYeti\PokerKernel\Evaluator\Enum\CombinationScoreEnum;
+use ForestYeti\PokerKernel\Evaluator\Enum\HoldemCombinationScoreEnum;
 use ForestYeti\PokerKernel\Evaluator\Exception\CombinationNotResolvedException;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\RoyalFlashResolver;
 use ForestYeti\PokerKernel\Evaluator\ValueObject\Player;
@@ -21,7 +21,7 @@ final class RoyalFlashResolverTest extends TestCase
     public function testRoyalFlashResolver(array $playingCards): void
     {
         $result = (new RoyalFlashResolver())
-            ->setBaseScore(CombinationScoreEnum::RoyalFlash->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::RoyalFlash->value)
             ->resolve($playingCards, new Player('Mock'));
 
         self::assertCount(5, $result->getPlayingCards());
@@ -59,7 +59,7 @@ final class RoyalFlashResolverTest extends TestCase
         ];
 
         (new RoyalFlashResolver())
-            ->setBaseScore(CombinationScoreEnum::RoyalFlash->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::RoyalFlash->value)
             ->resolve($cards, new Player('Mock'));
     }
 

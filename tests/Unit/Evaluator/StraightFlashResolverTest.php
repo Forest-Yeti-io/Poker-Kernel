@@ -5,7 +5,7 @@ namespace App\Tests\Evaluator;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardRankEnum;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardSuitEnum;
 use ForestYeti\PokerKernel\CardDeck\ValueObject\Card;
-use ForestYeti\PokerKernel\Evaluator\Enum\CombinationScoreEnum;
+use ForestYeti\PokerKernel\Evaluator\Enum\HoldemCombinationScoreEnum;
 use ForestYeti\PokerKernel\Evaluator\Exception\CombinationNotResolvedException;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\StraightFlashResolver;
 use ForestYeti\PokerKernel\Evaluator\ValueObject\Player;
@@ -22,7 +22,7 @@ final class StraightFlashResolverTest extends TestCase
     public function testStraightFlashResolver(array $playingCards, array $expectedRanks): void
     {
         $result = (new StraightFlashResolver())
-            ->setBaseScore(CombinationScoreEnum::StraightFlash->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::StraightFlash->value)
             ->resolve($playingCards, new Player('Mock'));
 
         self::assertCount(5, $result->getPlayingCards());
@@ -50,7 +50,7 @@ final class StraightFlashResolverTest extends TestCase
         ];
 
         (new StraightFlashResolver())
-            ->setBaseScore(CombinationScoreEnum::StraightFlash->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::StraightFlash->value)
             ->resolve($cards, new Player('Mock'));
     }
 

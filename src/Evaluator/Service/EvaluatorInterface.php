@@ -3,7 +3,7 @@
 namespace ForestYeti\PokerKernel\Evaluator\Service;
 
 use ForestYeti\PokerKernel\CardDeck\ValueObject\Card;
-use ForestYeti\PokerKernel\Evaluator\ValueObject\GameResult;
+use ForestYeti\PokerKernel\Evaluator\Dto\GameResult;
 use ForestYeti\PokerKernel\Evaluator\ValueObject\Player;
 
 interface EvaluatorInterface

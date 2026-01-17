@@ -5,7 +5,7 @@ namespace App\Tests\Evaluator;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardRankEnum;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardSuitEnum;
 use ForestYeti\PokerKernel\CardDeck\ValueObject\Card;
-use ForestYeti\PokerKernel\Evaluator\Enum\CombinationScoreEnum;
+use ForestYeti\PokerKernel\Evaluator\Enum\HoldemCombinationScoreEnum;
 use ForestYeti\PokerKernel\Evaluator\Exception\CombinationNotResolvedException;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\FourOfKindResolver;
 use ForestYeti\PokerKernel\Evaluator\ValueObject\Player;
@@ -21,7 +21,7 @@ final class FourOfKindResolverTest extends TestCase
     public function testFourOfKindResolver(array $playingCards, CardRankEnum $expectedFourRank, CardRankEnum $expectedKickerRank): void
     {
         $result = (new FourOfKindResolver())
-            ->setBaseScore(CombinationScoreEnum::FourOfKind->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::FourOfKind->value)
             ->resolve($playingCards, new Player('Mock'));
 
         self::assertCount(5, $result->getPlayingCards());
@@ -56,7 +56,7 @@ final class FourOfKindResolverTest extends TestCase
         ];
 
         (new FourOfKindResolver())
-            ->setBaseScore(CombinationScoreEnum::FourOfKind->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::FourOfKind->value)
             ->resolve($cards, new Player('Mock'));
     }
 

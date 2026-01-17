@@ -5,7 +5,7 @@ namespace App\Tests\Evaluator;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardRankEnum;
 use ForestYeti\PokerKernel\CardDeck\Enum\CardSuitEnum;
 use ForestYeti\PokerKernel\CardDeck\ValueObject\Card;
-use ForestYeti\PokerKernel\Evaluator\Enum\CombinationScoreEnum;
+use ForestYeti\PokerKernel\Evaluator\Enum\HoldemCombinationScoreEnum;
 use ForestYeti\PokerKernel\Evaluator\Exception\CombinationNotResolvedException;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\SetResolver;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\ThreeOfKindResolver;
@@ -23,7 +23,7 @@ final class ThreeOfKindResolverTest extends TestCase
     public function testSetResolver(array $playingCards, CardRankEnum $expectedSetRank, array $expectedKickersRankValues): void
     {
         $result = (new ThreeOfKindResolver())
-            ->setBaseScore(CombinationScoreEnum::ThreeOfKind->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::ThreeOfKind->value)
             ->resolve($playingCards, new Player('Mock'));
 
         self::assertCount(5, $result->getPlayingCards());
@@ -68,7 +68,7 @@ final class ThreeOfKindResolverTest extends TestCase
         ];
 
         (new ThreeOfKindResolver())
-            ->setBaseScore(CombinationScoreEnum::ThreeOfKind->value)
+            ->setBaseScore(HoldemCombinationScoreEnum::ThreeOfKind->value)
             ->resolve($playingCards, new Player('Mock'));
     }
 
