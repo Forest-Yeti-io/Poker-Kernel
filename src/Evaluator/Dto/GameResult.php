@@ -11,8 +11,6 @@ class GameResult
      */
     private array $resolverResults = [];
 
-    private ?ResolverResult $winner = null;
-
     /**
      * @var ResolverResult[]
      */
@@ -28,18 +26,6 @@ class GameResult
     public function getResolverResults(): array
     {
         return $this->resolverResults;
-    }
-
-    public function getWinner(): ?ResolverResult
-    {
-        return $this->winner;
-    }
-
-    public function setWinner(?ResolverResult $winner): self
-    {
-        $this->winner = $winner;
-
-        return $this;
     }
 
     /**

@@ -18,6 +18,7 @@ use ForestYeti\PokerKernel\Evaluator\Service\Resolver\ThreeOfKindResolver;
 use ForestYeti\PokerKernel\Evaluator\Service\Resolver\TwoPairResolver;
 use ForestYeti\PokerKernel\Evaluator\Dto\GameResult;
 use ForestYeti\PokerKernel\Evaluator\ValueObject\Player;
+use ForestYeti\PokerKernel\Evaluator\ValueObject\ResolverResult;
 
 class HoldemEvaluator implements EvaluatorInterface
 {
@@ -76,7 +77,6 @@ class HoldemEvaluator implements EvaluatorInterface
             }
         }
 
-        $gameResult->setWinner($bestResults[0] ?? null);
         $gameResult->setWinners($bestResults);
 
         return $gameResult;
