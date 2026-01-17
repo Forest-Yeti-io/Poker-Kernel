@@ -10,4 +10,8 @@ enum CombinationEnum: string
     case ThreeOfKind = 'ThreeOfKind';
     case Straight = 'Straight';
     case Flash = 'Flash';
+    case FullHouse = 'FullHouse';
+    case FourOfKind = 'FourOfKind';
+    case StraightFlash = 'StraightFlash';
+    case RoyalFlash = 'RoyalFlash';
 }
