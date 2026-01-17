@@ -20,7 +20,7 @@ class PairResolver extends AbstractResolver
      */
     public function resolve(array $playingCards, Player $player): ResolverResult
     {
-        $deck = new CardDeck($playingCards);
+        $deck = (new CardDeck($playingCards))->getSortedDesc();
 
         $groups = $deck->groupByRank();
 

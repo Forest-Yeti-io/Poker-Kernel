@@ -47,19 +47,70 @@ class HoldemEvaluator implements EvaluatorInterface
     public function evaluate(array $players, array $boardCards): GameResult
     {
         $gameResult = new GameResult();
+        $bestResults = [];
 
         foreach ($players as $player) {
             $playingCards = array_merge($player->getHandCards(), $boardCards);
 
             foreach ($this->resolvers as $resolver) {
                 try {
-                    $gameResult->addResolverResult($resolver->resolve($playingCards, $player));
+                    $resolverResult = $resolver->resolve($playingCards, $player);
+                    $gameResult->addResolverResult($resolverResult);
+
+                    if (empty($bestResults)) {
+                        $bestResults = [$resolverResult];
+                        break;
+                    }
+
+                    $comparison = $this->compareResolverResults($resolverResult, $bestResults[0]);
+                    if ($comparison > 0) {
+                        $bestResults = [$resolverResult];
+                    } elseif ($comparison === 0) {
+                        $bestResults[] = $resolverResult;
+                    }
+
+                    break;
                 } catch (CombinationNotResolvedException) {
                     continue;
                 }
             }
         }
 
+        $gameResult->setWinner($bestResults[0] ?? null);
+        $gameResult->setWinners($bestResults);
+
         return $gameResult;
+    }
+
+    private function compareResolverResults(ResolverResult $left, ResolverResult $right): int
+    {
+        if ($left->getCombinationScore() !== $right->getCombinationScore()) {
+            return $left->getCombinationScore() <=> $right->getCombinationScore();
+        }
+
+        $leftRanks = $this->getComparisonRanks($left);
+        $rightRanks = $this->getComparisonRanks($right);
+
+        foreach ($leftRanks as $index => $rank) {
+            $rightRank = $rightRanks[$index] ?? 0;
+            if ($rank === $rightRank) {
+                continue;
+            }
+
+            return $rank <=> $rightRank;
+        }
+
+        return 0;
+    }
+
+    /**
+     * @return int[]
+     */
+    private function getComparisonRanks(ResolverResult $result): array
+    {
+        return array_map(
+            static fn (Card $card) => $card->getRank()->value,
+            $result->getPlayingCards()
+        );
     }
 }

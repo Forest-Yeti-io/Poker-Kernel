@@ -68,7 +68,7 @@ final class StraightResolverTest extends TestCase
                     new Card(CardRankEnum::Two, CardSuitEnum::Clubs),
                     new Card(CardRankEnum::Nine, CardSuitEnum::Diamonds),
                 ],
-                [CardRankEnum::Ten->value, CardRankEnum::Jack->value, CardRankEnum::Queen->value, CardRankEnum::King->value, CardRankEnum::Ace->value],
+                [CardRankEnum::Ace->value, CardRankEnum::King->value, CardRankEnum::Queen->value, CardRankEnum::Jack->value, CardRankEnum::Ten->value],
             ],
             // Wheel straight, from A to Five
             [
@@ -81,7 +81,7 @@ final class StraightResolverTest extends TestCase
                     new Card(CardRankEnum::Nine, CardSuitEnum::Clubs),
                     new Card(CardRankEnum::King, CardSuitEnum::Diamonds),
                 ],
-                [CardRankEnum::Ace->value, CardRankEnum::Two->value, CardRankEnum::Three->value, CardRankEnum::Four->value, CardRankEnum::Five->value],
+                [CardRankEnum::Five->value, CardRankEnum::Four->value, CardRankEnum::Three->value, CardRankEnum::Two->value, CardRankEnum::Ace->value],
             ],
             // Middle straight, from Nine to King
             [
@@ -94,7 +94,7 @@ final class StraightResolverTest extends TestCase
                     new Card(CardRankEnum::Two, CardSuitEnum::Clubs),
                     new Card(CardRankEnum::Four, CardSuitEnum::Diamonds),
                 ],
-                [CardRankEnum::Nine->value, CardRankEnum::Ten->value, CardRankEnum::Jack->value, CardRankEnum::Queen->value, CardRankEnum::King->value],
+                [CardRankEnum::King->value, CardRankEnum::Queen->value, CardRankEnum::Jack->value, CardRankEnum::Ten->value, CardRankEnum::Nine->value],
             ],
         ];
     }

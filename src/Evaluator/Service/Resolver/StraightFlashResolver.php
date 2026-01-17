@@ -112,6 +112,7 @@ final class StraightFlashResolver extends AbstractResolver
         }
 
         $resultCards = [];
+        $bestSequence = array_reverse($bestSequence);
         foreach ($bestSequence as $rankValue) {
             if ($rankValue === CardRankEnum::LowAce->value) {
                 $rankValue = CardRankEnum::Ace->value;
