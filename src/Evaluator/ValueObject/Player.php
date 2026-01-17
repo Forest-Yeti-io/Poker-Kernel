@@ -6,7 +6,7 @@ readonly class Player
 {
     public function __construct(
         private string $identifier,
-        private array $handCards
+        private array $handCards = []
     ) {
     }
 

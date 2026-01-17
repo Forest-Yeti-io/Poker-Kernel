@@ -5,15 +5,15 @@ namespace ForestYeti\PokerKernel\Evaluator\ValueObject;
 readonly class ResolverResult
 {
     public function __construct(
-        private string $playerIdentifier,
+        private Player $player,
         private array $playingCards,
         private int $combinationScore
     ) {
     }
 
-    public function getPlayerIdentifier(): string
+    public function getPlayer(): Player
     {
-        return $this->playerIdentifier;
+        return $this->player;
     }
 
     public function getPlayingCards(): array
