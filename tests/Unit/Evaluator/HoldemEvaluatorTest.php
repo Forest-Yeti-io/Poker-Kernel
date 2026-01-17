@@ -36,7 +36,35 @@ final class HoldemEvaluatorTest extends TestCase
 
         self::assertCount(2, $gameResult->getResolverResults());
         self::assertCount(1, $gameResult->getWinners());
-        self::assertSame('P2', $gameResult->getWinner()?->getPlayer()->getIdentifier());
+        self::assertSame('P2', $gameResult->getWinners()[0]?->getPlayer()->getIdentifier());
+    }
+
+    public function testEvaluateStraightUsesKickersToBreakTies(): void
+    {
+        $board = [
+            new Card(CardRankEnum::Ten, CardSuitEnum::Hearts),
+            new Card(CardRankEnum::King, CardSuitEnum::Diamonds),
+            new Card(CardRankEnum::Queen, CardSuitEnum::Spades),
+            new Card(CardRankEnum::Three, CardSuitEnum::Clubs),
+            new Card(CardRankEnum::Jack, CardSuitEnum::Hearts),
+        ];
+
+        $players = [
+            new Player('P1', [
+                new Card(CardRankEnum::Ace, CardSuitEnum::Clubs),
+                new Card(CardRankEnum::Two, CardSuitEnum::Diamonds),
+            ]),
+            new Player('P2', [
+                new Card(CardRankEnum::Nine, CardSuitEnum::Diamonds),
+                new Card(CardRankEnum::Two, CardSuitEnum::Hearts),
+            ]),
+        ];
+
+        $gameResult = (new HoldemEvaluator())->evaluate($players, $board);
+
+        self::assertCount(2, $gameResult->getResolverResults());
+        self::assertCount(1, $gameResult->getWinners());
+        self::assertSame('P1', $gameResult->getWinners()[0]?->getPlayer()->getIdentifier());
     }
 
     public function testEvaluateTracksSplitPotWinners(): void
